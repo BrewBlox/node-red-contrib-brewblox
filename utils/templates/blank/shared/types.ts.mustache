@@ -1,3 +1,15 @@
+import { EditorNodeProperties, Node, NodeDef } from 'node-red';
+
 export interface <%NodeTypePascalCase%>Options {
   // node options
+}
+
+// export interface <%NodeTypePascalCase%>Node extends Node {}
+export type <%NodeTypePascalCase%>Node = Node;
+
+export interface <%NodeTypePascalCase%>NodeDef extends NodeDef, <%NodeTypePascalCase%>Options {}
+
+export interface <%NodeTypePascalCase%>EditorNodeProperties
+  extends EditorNodeProperties, <%NodeTypePascalCase%>Options {
+  // node properties
 }

@@ -1,11 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'prettier/@typescript-eslint',
-  ],
-  plugins: ['jest', '@typescript-eslint', 'simple-import-sort'],
+  extends: ['plugin:@typescript-eslint/recommended'],
+  plugins: ['jest', 'simple-import-sort'],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -35,6 +31,8 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'simple-import-sort/sort': 'error',
     'sort-imports': 'off',
     'import/order': 'off',
@@ -45,6 +43,7 @@ module.exports = {
     'import/newline-after-import': 'off',
     'no-console': 'warn',
     'no-multiple-empty-lines': 'error',
+    'semi': 'error',
     'comma-dangle': [
       'error',
       'always-multiline',
