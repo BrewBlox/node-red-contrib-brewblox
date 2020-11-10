@@ -51,6 +51,7 @@ const makePlugins = (nodeType) => [
       `src/nodes/${nodeType}/${nodeType}.setup.ts`,
       `src/nodes/${nodeType}/shared/**/*.ts`,
       'src/nodes/shared/**/*.ts',
+      'src/shared-types/**/*.ts',
     ],
     target: 'es5',
     tsconfig: false,

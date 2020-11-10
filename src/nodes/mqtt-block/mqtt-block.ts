@@ -1,6 +1,8 @@
 import { NodeInitializer } from 'node-red';
+import { SparkStateEvent } from 'src/shared-types/spark-service-types';
+import { schemas, validate } from 'src/validation';
 
-import { MqttBlockNode, MqttBlockNodeDef, SparkStatus } from './shared/types';
+import { MqttBlockNode, MqttBlockNodeDef } from './shared/types';
 
 const nodeInit: NodeInitializer = (RED): void => {
   function MqttBlockNodeConstructor(
@@ -10,11 +12,10 @@ const nodeInit: NodeInitializer = (RED): void => {
     RED.nodes.createNode(this, config);
 
     this.on('input', (msg, send, done) => {
-      const status = msg.payload as SparkStatus | null;
+      const event = validate<SparkStateEvent>(schemas.SparkStateEvent, msg.payload);
 
-      if (status?.type === 'Spark.state'
-        && status?.key === config.serviceId) {
-        const block = status.data
+      if (event && event.key === config.serviceId) {
+        const block = event.data
           .blocks
           .find(block => block.id === config.blockId);
 

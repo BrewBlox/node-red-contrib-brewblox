@@ -7,7 +7,7 @@
     "noEmitOnError": true,
     "sourceMap": true,
     "outDir": "dist",
-    "rootDir": "src",
+    // "rootDir": "src",
     "removeComments": false,
     "noEmit": false,
     "importHelpers": false,
@@ -27,8 +27,9 @@
     "esModuleInterop": true,
     "preserveConstEnums": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
 
-    "typeRoots": ["./src/types", "./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"]
   },
   "include": ["src"],
   "exclude": ["node_modules"]

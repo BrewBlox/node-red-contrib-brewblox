@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "description": "Brewblox integration for node-red",
   "scripts": {
-    "add-node": "node ./utils/add-node.js",
-    "copy": "copyfiles -u 2 \"./src/nodes/**/*.{png,svg}\" \"./dist/nodes/\"",
+    "add-node": "node dev/add-node.js",
+    "schemas": "rm -rf src/nodes/schemas/*; ts-node dev/schemas.ts",
+    "copy:assets": "copyfiles -u 2 \"./src/nodes/**/*.{png,svg}\" \"./dist/nodes/\"",
+    "copy:schemas": "copyfiles -u 2 \"./src/schemas/**/*.json\" \"./dist/schemas/\"",
+    "copy": "yarn copy:assets && yarn copy:schemas",
     "build:html": "rollup -c rollup.config.editor.js",
     "build:runtime": "tsc -p tsconfig.runtime.json",
     "build:runtime:watch": "tsc -p tsconfig.runtime.watch.json --watch --preserveWatchOutput",
@@ -20,10 +23,13 @@
   "node-red": {
     "nodes": {
       "mqtt-block": "./dist/nodes/mqtt-block/mqtt-block.js",
-      "block-value": "./dist/nodes/block-value/block-value.js"
+      "temp-sensor-value": "./dist/nodes/temp-sensor-value/temp-sensor-value.js"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "ajv": "^6.12.6",
+    "typescript-string-enums": "^1.0.0"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^6.1.0",
     "@types/express": "^4.17.7",
@@ -49,7 +55,9 @@
     "onchange": "^7.0.2",
     "rollup": "^2.33.1",
     "ts-jest": "^26.1.4",
-    "typescript": "^3.9.7"
+    "ts-node": "^9.0.0",
+    "typescript": "^3.9.7",
+    "typescript-json-schema": "^0.43.0"
   },
   "jest": {
     "testEnvironment": "node",

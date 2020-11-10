@@ -14,12 +14,3 @@ export interface MqttBlockEditorNodeProperties
   extends EditorNodeProperties, MqttBlockOptions {
   // node properties
 }
-
-export interface SparkStatus {
-  key: string;
-  type: string;
-  data: {
-    status: any;
-    blocks: any[];
-  };
-}

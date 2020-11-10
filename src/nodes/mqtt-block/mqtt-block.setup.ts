@@ -14,7 +14,7 @@ RED.nodes.registerType<MqttBlockEditorNodeProperties>('mqtt-block', {
   },
   inputs: 1,
   outputs: 1,
-  icon: 'file.png',
+  icon: 'font-awesome/fa-microchip',
   paletteLabel: 'mqtt block',
   label: function () {
     return this.name || 'mqtt block';

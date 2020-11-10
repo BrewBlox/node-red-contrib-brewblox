@@ -33,6 +33,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/ban-types': 'off',
     'simple-import-sort/sort': 'error',
     'sort-imports': 'off',
     'import/order': 'off',
