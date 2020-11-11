@@ -1,7 +1,7 @@
 import { NodeInitializer } from 'node-red';
-import { SparkStateEvent } from 'src/shared-types/spark-service-types';
-import { schemas, validate } from 'src/validation';
 
+import { SparkStateEvent } from '../../types';
+import { schemas, validate } from '../../validation';
 import { MqttBlockNode, MqttBlockNodeDef } from './shared/types';
 
 const nodeInit: NodeInitializer = (RED): void => {
