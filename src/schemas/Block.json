@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "nid": {
+      "type": "number"
+    },
+    "serviceId": {
+      "type": "string"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "type": {
+      "$ref": "#/definitions/BlockType"
+    },
+    "data": {}
+  },
+  "required": [
+    "data",
+    "groups",
+    "id",
+    "serviceId",
+    "type"
+  ],
+  "definitions": {
+    "BlockType": {
+      "enum": [
+        "ActuatorAnalogMock",
+        "ActuatorLogic",
+        "ActuatorOffset",
+        "ActuatorPwm",
+        "Balancer",
+        "DS2408",
+        "DS2413",
+        "DeprecatedObject",
+        "DigitalActuator",
+        "DisplaySettings",
+        "Groups",
+        "InactiveObject",
+        "MockPins",
+        "MotorValve",
+        "Mutex",
+        "OneWireBus",
+        "Pid",
+        "SetpointProfile",
+        "SetpointSensorPair",
+        "Spark2Pins",
+        "Spark3Pins",
+        "SysInfo",
+        "TempSensorCombi",
+        "TempSensorMock",
+        "TempSensorOneWire",
+        "Ticks",
+        "TouchSettings",
+        "WiFiSettings"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

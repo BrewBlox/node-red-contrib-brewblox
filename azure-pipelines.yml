@@ -1,0 +1,67 @@
+pool:
+  vmImage: "Ubuntu-20.04"
+
+trigger:
+  tags:
+    include:
+      - "*"
+  branches:
+    include:
+      - refs/heads/*
+
+pr:
+  branches:
+    include:
+      - "*"
+
+variables:
+  # Variables imported from brewblox group:
+  # DOCKER_USER
+  # DOCKER_PASSWORD
+  - group: brewblox
+  - name: DOCKER_REPO
+    value: brewblox/node-red
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "12.x"
+    displayName: "Install Node.js"
+
+  - bash: |
+      BRANCH=$(echo $(Build.SourceBranch) | grep -oP "^refs/heads/\K.*")
+      TAG=$(echo $BRANCH | tr '/' '-' | tr '[:upper:]' '[:lower:]')
+      echo "##vso[task.setvariable variable=BRANCH]$BRANCH"
+      echo "##vso[task.setvariable variable=TAG]$TAG"
+    displayName: Export build variables
+
+  - bash: |
+      yarn install
+    displayName: Install
+
+  - bash: |
+      yarn lint
+    displayName: Test
+
+  - bash: |
+      yarn build
+    displayName: Build
+
+  - bash: |
+      curl -fsSL https://raw.githubusercontent.com/BrewBlox/deployed-images/develop/prepare_buildx.sh | bash
+    displayName: Prepare buildx
+    condition: and(succeeded(), variables.BRANCH)
+
+  - bash: |
+      echo $(DOCKER_PASSWORD) | docker login -u $(DOCKER_USER) --password-stdin
+    displayName: Docker login
+    condition: and(succeeded(), variables.BRANCH)
+
+  - bash: >-
+      docker buildx build
+      --tag $(DOCKER_REPO):$(TAG)
+      --push
+      --platform linux/amd64,linux/arm/v7
+      .
+    displayName: Docker build
+    condition: and(succeeded(), variables.BRANCH)
