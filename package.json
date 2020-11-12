@@ -23,17 +23,22 @@
   "node-red": {
     "nodes": {
       "mqtt-block": "./dist/nodes/mqtt-block/mqtt-block.js",
-      "temp-sensor-value": "./dist/nodes/temp-sensor-value/temp-sensor-value.js"
+      "block-value-check": "./dist/nodes/block-value-check/block-value-check.js"
     }
   },
   "dependencies": {
     "ajv": "^6.12.6",
+    "js-quantities": "^1.7.5",
+    "lodash": "^4.17.20",
+    "parse-duration": "^0.4.4",
     "typescript-string-enums": "^1.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^6.1.0",
     "@types/express": "^4.17.7",
     "@types/jest": "^26.0.9",
+    "@types/js-quantities": "^1.6.2",
+    "@types/lodash": "^4.14.165",
     "@types/node": "^14.0.27",
     "@types/node-red": "^1.1.0",
     "@types/node-red-node-test-helper": "^0.2.0",
