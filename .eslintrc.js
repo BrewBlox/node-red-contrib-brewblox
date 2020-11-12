@@ -18,22 +18,17 @@ module.exports = {
     'no-underscore-dangle': 0,
     'jest/no-focused-tests': 2,
     'jest/no-identical-title': 2,
-    'prefer-arrow-callback': [
-      'error',
-      {
-        allowNamedFunctions: true,
-      },
-    ],
-    'no-param-reassign': [
-      'error',
-      {
-        props: false,
-      },
-    ],
+    'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
+    'no-param-reassign': ['error', { props: false }],
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/ban-ts-comment': [
+      'error',
+      { 'ts-expect-error': 'allow-with-description' },
+    ],
     'simple-import-sort/sort': 'error',
     'sort-imports': 'off',
     'import/order': 'off',
