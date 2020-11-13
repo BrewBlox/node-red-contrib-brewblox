@@ -78,13 +78,8 @@ steps:
     condition: and(succeeded(), variables.BRANCH)
 
   - bash: |
-      npm publish || true
+      npm publish --tag $(TAG) || npm dist-tag add $(NPM_REPO)@$(NPM_VERSION) $(TAG)
     displayName: NPM publish
-    condition: and(succeeded(), variables.BRANCH)
-
-  - bash: |
-      npm dist-tag add $(NPM_REPO)@$(NPM_VERSION) $(TAG)
-    displayName: NPM tag
     condition: and(succeeded(), variables.BRANCH)
 
   - bash: |
