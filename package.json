@@ -22,7 +22,7 @@
   "license": "GPL-3.0",
   "node-red": {
     "nodes": {
-      "mqtt-block": "./dist/nodes/mqtt-block/mqtt-block.js",
+      "mqtt-state-get": "./dist/nodes/mqtt-state-get/mqtt-state-get.js",
       "block-value-check": "./dist/nodes/block-value-check/block-value-check.js",
       "block-value-update": "./dist/nodes/block-value-update/block-value-update.js",
       "block-value-patch": "./dist/nodes/block-value-patch/block-value-patch.js",
