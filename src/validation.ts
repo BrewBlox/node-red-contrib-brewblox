@@ -1,11 +1,15 @@
 import Ajv from 'ajv';
 
 import Block from './schemas/Block.json';
+import BlockPatch from './schemas/BlockPatch.json';
 import SparkStateEvent from './schemas/SparkStateEvent.json';
+import StateEvent from './schemas/StateEvent.json';
 
 const ajv = new Ajv();
 export const schemas = {
   Block,
+  BlockPatch,
+  StateEvent,
   SparkStateEvent,
 };
 

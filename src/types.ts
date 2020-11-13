@@ -3,6 +3,8 @@ export * from './shared-types/spark-block-enums';
 export * from './shared-types/spark-block-types';
 export * from './shared-types/spark-service-types';
 
+import { BlockType } from './shared-types/spark-block-enums';
+
 export interface JSONBloxField {
   __bloxtype: string;
 }
@@ -19,4 +21,22 @@ export interface JSONLink extends JSONBloxField {
   id: string | null;
   type: string;
   driven?: boolean;
+}
+
+export interface BlockPatch {
+  id: string;
+  serviceId: string;
+  data: any; // Partial
+
+  // Optional values
+  nid?: number;
+  groups?: number[];
+  type?: BlockType;
+}
+
+export interface StateEvent {
+  key: string;
+  type: string;
+  ttl: string;
+  data: any;
 }

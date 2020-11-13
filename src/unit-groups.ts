@@ -51,11 +51,14 @@ export const findGroup = (unit?: string): UnitGroup | null =>
     ? groups.find(g => g.test(unit)) ?? null
     : null;
 
-
-export const checkCompatible = (qty1: JSONQuantity, qty2: JSONQuantity): void => {
+export const isCompatibleQty = (qty1: JSONQuantity, qty2: JSONQuantity): boolean => {
   const group1 = findGroup(qty1.unit)?.name;
   const group2 = findGroup(qty2.unit)?.name;
-  if (group1 !== group2) {
+  return group1 === group2;
+};
+
+export const checkCompatible = (qty1: JSONQuantity, qty2: JSONQuantity): void => {
+  if (!isCompatibleQty(qty1, qty2)) {
     throw new Error(`Incompatible units: '${qty1.unit}' vs. '${qty2.unit}'`);
   }
 };

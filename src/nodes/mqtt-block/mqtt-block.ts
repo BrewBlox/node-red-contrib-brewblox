@@ -14,7 +14,7 @@ const nodeInit: NodeInitializer = (RED): void => {
     this.on('input', (msg, send, done) => {
       const event = validate<SparkStateEvent>(schemas.SparkStateEvent, msg.payload);
 
-      if (event && event.key === config.serviceId) {
+      if (event?.key === config.serviceId) {
         const block = event.data
           .blocks
           .find(block => block.id === config.blockId);
