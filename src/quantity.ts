@@ -8,6 +8,7 @@ import { JSONQuantity } from './types';
 import { checkCompatible, findGroup } from './unit-groups';
 
 export { isJSONQuantity, isBloxField } from './bloxfield';
+export { isCompatibleQty } from './unit-groups';
 
 type WrapperValue = JSONQuantity | number | string | null;
 

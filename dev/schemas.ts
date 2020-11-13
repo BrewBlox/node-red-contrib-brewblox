@@ -10,11 +10,13 @@ const settings: PartialArgs = {
 const program = getProgramFromFiles([resolve('./src/types.ts')]);
 
 const types = [
+  'StateEvent',
   'SparkStateEvent',
   'Block',
+  'BlockPatch',
 ];
 
 types.forEach(t => {
   const schema = generateSchema(program, t, settings);
-  fs.writeFileSync(`src/nodes/schemas/${t}.json`, JSON.stringify(schema, undefined, 2));
+  fs.writeFileSync(`src/schemas/${t}.json`, JSON.stringify(schema, undefined, 2));
 });

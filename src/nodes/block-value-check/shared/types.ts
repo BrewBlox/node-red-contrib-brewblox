@@ -3,7 +3,7 @@ import { EditorNodeProperties, Node, NodeDef } from 'node-red';
 export interface BlockValueCheckOptions {
   field: string;
   operator: 'gte' | 'lte';
-  value: string; // We'll parse to number later
+  value: string; // Number parsing is optional
   unit: string;
 }
 

@@ -2,19 +2,19 @@ import { NodeInitializer } from 'node-red';
 
 import { SparkStateEvent } from '../../types';
 import { schemas, validate } from '../../validation';
-import { MqttBlockNode, MqttBlockNodeDef } from './shared/types';
+import { MqttStateGetNode, MqttStateGetNodeDef } from './shared/types';
 
 const nodeInit: NodeInitializer = (RED): void => {
-  function MqttBlockNodeConstructor(
-    this: MqttBlockNode,
-    config: MqttBlockNodeDef,
+  function MqttStateGetNodeConstructor(
+    this: MqttStateGetNode,
+    config: MqttStateGetNodeDef,
   ): void {
     RED.nodes.createNode(this, config);
 
     this.on('input', (msg, send, done) => {
       const event = validate<SparkStateEvent>(schemas.SparkStateEvent, msg.payload);
 
-      if (event && event.key === config.serviceId) {
+      if (event?.key === config.serviceId) {
         const block = event.data
           .blocks
           .find(block => block.id === config.blockId);
@@ -29,7 +29,7 @@ const nodeInit: NodeInitializer = (RED): void => {
     });
   }
 
-  RED.nodes.registerType('mqtt-block', MqttBlockNodeConstructor);
+  RED.nodes.registerType('mqtt-state-get', MqttStateGetNodeConstructor);
 };
 
 export = nodeInit;
