@@ -64,9 +64,9 @@ steps:
     condition: and(succeeded(), variables.BRANCH)
 
   - bash: |
-    npm set //registry.npmjs.org/:_authToken $(NPM_TOKEN)
-   displayName: NPM login
-   condition: and(succeeded(), variables.BRANCH)
+      npm set //registry.npmjs.org/:_authToken $(NPM_TOKEN)
+    displayName: NPM login
+    condition: and(succeeded(), variables.BRANCH)
 
   - bash: >-
       docker buildx build
