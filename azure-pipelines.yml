@@ -18,9 +18,12 @@ variables:
   # Variables imported from brewblox group:
   # DOCKER_USER
   # DOCKER_PASSWORD
+  # NPM_TOKEN
   - group: brewblox
   - name: DOCKER_REPO
     value: brewblox/node-red
+  - name: NPM_REPO
+    value: node-red-contrib-brewblox
 
 steps:
   - task: NodeTool@0
@@ -31,8 +34,10 @@ steps:
   - bash: |
       BRANCH=$(echo $(Build.SourceBranch) | grep -oP "^refs/heads/\K.*")
       TAG=$(echo $BRANCH | tr '/' '-' | tr '[:upper:]' '[:lower:]')
+      NPM_VERSION=$(node -pe "require('./package.json').version")
       echo "##vso[task.setvariable variable=BRANCH]$BRANCH"
       echo "##vso[task.setvariable variable=TAG]$TAG"
+      echo "##vso[task.setvariable variable=NPM_VERSION]$NPM_VERSION"
     displayName: Export build variables
 
   - bash: |
@@ -58,6 +63,11 @@ steps:
     displayName: Docker login
     condition: and(succeeded(), variables.BRANCH)
 
+  -bash: |
+    npm set //registry.npmjs.org/:_authToken $(NPM_TOKEN)
+   displayName: NPM login
+   condition: and(succeeded(), variables.BRANCH)
+
   - bash: >-
       docker buildx build
       --tag $(DOCKER_REPO):$(TAG)
@@ -65,4 +75,9 @@ steps:
       --platform linux/amd64,linux/arm/v7
       .
     displayName: Docker build
+    condition: and(succeeded(), variables.BRANCH)
+
+  - bash: >-
+      npm publish; npm dist-tag add $(NPM_REPO)@$(NPM_VERSION) $(TAG)
+    displayName: NPM publish
     condition: and(succeeded(), variables.BRANCH)
