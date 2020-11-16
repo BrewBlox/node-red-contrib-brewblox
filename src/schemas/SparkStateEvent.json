@@ -1,17 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "key": {
-      "type": "string"
-    },
     "type": {
       "type": "string",
       "enum": [
         "Spark.state"
       ]
-    },
-    "ttl": {
-      "type": "string"
     },
     "data": {
       "type": "object",
@@ -30,6 +24,12 @@
         "blocks",
         "status"
       ]
+    },
+    "key": {
+      "type": "string"
+    },
+    "ttl": {
+      "type": "string"
     }
   },
   "required": [
