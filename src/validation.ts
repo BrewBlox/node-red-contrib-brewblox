@@ -1,20 +1,12 @@
 import Ajv from 'ajv';
 
-import Block from './schemas/Block.json';
-import BlockPatch from './schemas/BlockPatch.json';
-import SparkStateEvent from './schemas/SparkStateEvent.json';
-import StateEvent from './schemas/StateEvent.json';
+import { schemas } from './schemas';
+export { schemas } from './schemas';
 
 const ajv = new Ajv();
-export const schemas = {
-  Block,
-  BlockPatch,
-  StateEvent,
-  SparkStateEvent,
-};
 
 // One of the values in the `schemas` object
-type SchemaType = typeof schemas[keyof typeof schemas];
+export type SchemaType = typeof schemas[keyof typeof schemas];
 
 export function validate<T>(schema: SchemaType, data: unknown): T | null {
   return ajv.validate(schema, data)

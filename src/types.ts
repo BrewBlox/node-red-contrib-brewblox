@@ -1,9 +1,6 @@
-export * from './shared-types/automation-types';
-export * from './shared-types/spark-block-enums';
-export * from './shared-types/spark-block-types';
-export * from './shared-types/spark-service-types';
+export * from './shared-types';
 
-import { BlockType } from './shared-types/spark-block-enums';
+import { BlockType } from './shared-types';
 
 export interface JSONBloxField {
   __bloxtype: string;
@@ -32,11 +29,4 @@ export interface BlockPatch {
   nid?: number;
   groups?: number[];
   type?: BlockType;
-}
-
-export interface StateEvent {
-  key: string;
-  type: string;
-  ttl: string;
-  data: any;
 }
