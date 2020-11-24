@@ -38,24 +38,22 @@ const nodeInit: NodeInitializer = (RED): void => {
           return done();
         }
 
-        msg.payload = {
-          ...base,
-          data: merge(base.data, patch.data),
-        };
+        msg.payload = merge(base, patch);
       }
 
       if (config.merge === 'msg-input') {
         const base = validate<Block>(schemas.Block, msg.payload);
-        const data = JSON.parse(config.data);
+        const patch = JSON.parse(config.patch);
 
         if (!base) {
           return done();
         }
 
-        msg.payload = {
-          ...base,
-          data: merge(base.data, data),
-        };
+        msg.payload = merge(base, patch);
+      }
+
+      if (!validate(schemas.Block, msg.payload)) {
+        throw new Error(`Merged data is not a valid Block: ${JSON.stringify(msg.payload)}`);
       }
 
       send(msg);

@@ -24,7 +24,9 @@ const nodeInit: NodeInitializer = (RED): void => {
       }
 
       if (
-        (isJSONQuantity(value) && qty(value)[config.operator](cmpValue, cmpUnit ?? value.unit)) ||
+        (isJSONQuantity(value)
+          && value.value !== null
+          && qty(value)[config.operator](cmpValue, cmpUnit ?? value.unit)) ||
         (config.operator === 'gte' && value >= cmpValue) ||
         (config.operator === 'lte' && value <= cmpValue)
       ) {

@@ -2,7 +2,7 @@ import { EditorNodeProperties, Node, NodeDef } from 'node-red';
 
 export interface BlockChangeOptions {
   merge: 'cache-msg' | 'msg-input';
-  data: any;
+  patch: string; // raw JSON
 }
 
 // export interface BlockChangeNode extends Node {}

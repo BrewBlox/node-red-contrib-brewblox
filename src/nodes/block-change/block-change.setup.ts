@@ -10,7 +10,7 @@ RED.nodes.registerType<BlockChangeEditorNodeProperties>('block-change', {
   defaults: {
     name: { value: '' },
     merge: { value: 'msg-input' },
-    data: { value: '{}' },
+    patch: { value: '{"data":{}}' },
   },
   inputs: 1,
   outputs: 1,
@@ -20,7 +20,8 @@ RED.nodes.registerType<BlockChangeEditorNodeProperties>('block-change', {
     return this.name || 'change block';
   },
   oneditprepare: function () {
-    $('#node-input-data').typedInput({
+    $('#node-input-patch').prop('placeholder', '{"data": {}}');
+    $('#node-input-patch').typedInput({
       default: 'json',
       types: ['json'],
     });

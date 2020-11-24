@@ -8,14 +8,14 @@
     <input type="text" id="node-input-name" placeholder="Name" />
   </div>
   <div class="form-row">
-    <label for="node-input-operation"> Merge</label>
-    <select type="text" id="node-input-operation" style="width:70%;">
+    <label for="node-input-merge"> Merge</label>
+    <select type="text" id="node-input-merge" style="width:70%;">
       <option value="cache-msg">msg.payload into cached block</option>
-      <option value="msg-input">data into msg.payload.data</option>
+      <option value="msg-input">input into msg.payload</option>
     </select>
   </div>
-  <div class="form-row node-input-data">
-    <label for="node-input-data"> Block data</label>
-    <input type="text" id="node-input-data" />
+  <div class="form-row node-input-patch">
+    <label for="node-input-patch"> Block input</label>
+    <input type="text" id="node-input-patch" />
   </div>
 </script>
