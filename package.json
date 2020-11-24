@@ -22,11 +22,10 @@
   "license": "GPL-3.0",
   "node-red": {
     "nodes": {
-      "mqtt-state-get": "./dist/nodes/mqtt-state-get/mqtt-state-get.js",
-      "block-value-check": "./dist/nodes/block-value-check/block-value-check.js",
-      "block-value-update": "./dist/nodes/block-value-update/block-value-update.js",
-      "block-value-patch": "./dist/nodes/block-value-patch/block-value-patch.js",
-      "mqtt-state-cache": "./dist/nodes/mqtt-state-cache/mqtt-state-cache.js"
+      "block-get": "./dist/nodes/block-get/block-get.js",
+      "block-check": "./dist/nodes/block-check/block-check.js",
+      "spark-state-cache": "./dist/nodes/spark-state-cache/spark-state-cache.js",
+      "block-change": "./dist/nodes/block-change/block-change.js"
     }
   },
   "dependencies": {
