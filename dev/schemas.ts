@@ -14,7 +14,6 @@ const types = [
   'BlockPatch',
   'SparkPatchEvent',
   'SparkStateEvent',
-  'StateEvent',
 ].sort();
 
 types.forEach(t => {
