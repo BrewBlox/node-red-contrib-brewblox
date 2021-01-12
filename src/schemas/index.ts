@@ -3,12 +3,10 @@ import Block from './Block.json';
 import BlockPatch from './BlockPatch.json';
 import SparkPatchEvent from './SparkPatchEvent.json';
 import SparkStateEvent from './SparkStateEvent.json';
-import StateEvent from './StateEvent.json';
 
 export const schemas = {
   Block,
   BlockPatch,
   SparkPatchEvent,
   SparkStateEvent,
-  StateEvent,
 };
