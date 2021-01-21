@@ -72,7 +72,7 @@ steps:
       docker buildx build
       --tag $(DOCKER_REPO):$(TAG)
       --push
-      --platform linux/amd64,linux/arm/v7
+      --platform linux/amd64,linux/arm/v7,linux/arm64/v8
       .
     displayName: Docker build
     condition: and(succeeded(), variables.BRANCH)
