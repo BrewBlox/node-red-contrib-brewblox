@@ -227,6 +227,8 @@ module.exports = {
   //    //   - reason: if result is false, the HTTP reason string to return
   //},
 
+  functionExternalModules: true,
+
   // The following property can be used to seed Global Context with predefined
   // values. This allows extra node modules to be made available with the
   // Function node.
