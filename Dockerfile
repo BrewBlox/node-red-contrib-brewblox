@@ -1,4 +1,4 @@
-FROM nodered/node-red
+FROM nodered/node-red:latest-14
 
 COPY --chown=node-red ./package*.json /node-red-contrib-brewblox/
 COPY --chown=node-red ./dist/ /node-red-contrib-brewblox/dist
